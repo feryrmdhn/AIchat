@@ -47,7 +47,9 @@ const Home: NextPage<GlobalTypes> = () => {
       <main className={styles.main}>
         <Box style={{textAlign: 'center'}}>
           <Typography variant="h4">{`Fery's AI chat`}</Typography>
-          <Link href='/description'>About</Link>
+          <Link href='/description'>
+            <u>About</u>
+          </Link>
         </Box>
         <form>
           <TextareaAutosize
