@@ -16,6 +16,8 @@ const Home: NextPage<GlobalTypes> = () => {
   const [result, setResult] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
+  console.log(process.env.REACT_APP_OPENAI_API_KEY)
+
   const handleClick = async (e: FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -56,7 +58,7 @@ const Home: NextPage<GlobalTypes> = () => {
             onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setPrompt(e.target.value)}
             minRows={3}
             maxRows={5}
-            placeholder="Write here..."
+            placeholder="Type here..."
             style={{ width: '100%' , padding: 15}}
           />
           <Button
