@@ -46,7 +46,7 @@ const Home: NextPage<GlobalTypes> = () => {
       </Head>
       <main className={styles.main}>
         <Box style={{textAlign: 'center'}}>
-          <Typography variant="h4">{`Fery's AI chat`}</Typography>
+          <Typography variant="h4">{`Fery's chat AI`}</Typography>
           <Link href='/description'>
             <u>About</u>
           </Link>
