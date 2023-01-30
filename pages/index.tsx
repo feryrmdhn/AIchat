@@ -57,8 +57,8 @@ const Home: NextPage = () => {
             aria-label="minimum height"
             value={prompt}
             onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setPrompt(e.target.value)}
-            minRows={6}
-            maxRows={10}
+            minRows={5}
+            maxRows={8}
             placeholder="Type here..."
             style={{ width: '100%', padding: 15 }}
           />
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
             {isLoading ? <CircularProgress size='25px' /> : 'submit'}
           </Button>
         </form>
-        <Box height='250px' style={{overflowY: 'scroll'}}>
+        <Box height='220px' style={{overflowY: 'scroll'}}>
           <Typography variant='inherit' lineHeight='22px' className={styles.fonts}>
             {result}
           </Typography>
