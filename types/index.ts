@@ -1,5 +1,12 @@
-export interface GlobalTypes {
+export interface OpenAIResponse {
     id?: number;
-    name?: string;
-    status?: boolean;
+    data: ApiResponse;
+}
+
+export interface ApiResponse {
+    choices: Array<string | any>;
+    created: number;
+    model: string;
+    object: string;
+    usage?: number | string | any;
 }

@@ -5,11 +5,11 @@ import { OpenAIApi } from 'openai'
 import { configuration } from '@/utils'
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { NextPage } from 'next'
-import { GlobalTypes } from '@/types'
+import { OpenAIResponse } from '@/types'
 import { Box, Button, CircularProgress, TextareaAutosize } from '@mui/material'
 import { Typography } from '@mui/material';
 
-const Home: NextPage<GlobalTypes> = () => {
+const Home: NextPage = () => {
   const openai = new OpenAIApi(configuration)
 
   const [prompt, setPrompt] = useState<string>('')
@@ -20,7 +20,7 @@ const Home: NextPage<GlobalTypes> = () => {
     e.preventDefault()
     setIsLoading(true)
     try {
-      const res = await openai.createCompletion({
+      const res: OpenAIResponse = await openai.createCompletion({
         model: 'text-davinci-003',
         prompt: prompt,
         temperature: 0.5,
