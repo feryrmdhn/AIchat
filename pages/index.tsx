@@ -9,12 +9,14 @@ import { GlobalTypes } from '@/types'
 import { Box, Button, CircularProgress, TextareaAutosize } from '@mui/material'
 import { Typography } from '@mui/material';
 
-const Home: NextPage<GlobalTypes> = ({ openai }) => {
+const Home: NextPage<GlobalTypes> = () => {
+  const openai = new OpenAIApi(configuration)
+
   const [prompt, setPrompt] = useState<string>('')
   const [result, setResult] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   
-  const handleClick = async (e: FormEvent) => {
+  const handleClick = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
     try {
@@ -27,7 +29,7 @@ const Home: NextPage<GlobalTypes> = ({ openai }) => {
       setResult(res.data.choices[0].text as string)
     }
     catch (err: any){
-      // console.log(err.response.data.error.type)
+      alert(err.response.data.error.type)
     }
     finally {
       setIsLoading(false)
@@ -76,11 +78,6 @@ const Home: NextPage<GlobalTypes> = ({ openai }) => {
       </main>
     </>
   )
-}
-
-Home.getInitialProps = async () => {
-  const openai = new OpenAIApi(configuration)
-  return { openai }
 }
 
 export default Home;
