@@ -57,13 +57,14 @@ const Home: NextPage = () => {
             aria-label="minimum height"
             value={prompt}
             onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setPrompt(e.target.value)}
-            minRows={3}
-            maxRows={5}
+            minRows={6}
+            maxRows={10}
             placeholder="Type here..."
-            style={{ width: '100%' , padding: 15}}
+            style={{ width: '100%', padding: 15 }}
           />
           <Button
             variant="outlined"
+            disabled={!prompt}
             style={{marginTop: '20px'}}
             className={styles.btn}
             onClick={handleClick}
