@@ -16,7 +16,7 @@ const Home: NextPage<GlobalTypes> = () => {
   const [result, setResult] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   
-  const handleClick = async (e: FormEvent<HTMLFormElement>) => {
+  const handleClick = async (e: FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     try {
