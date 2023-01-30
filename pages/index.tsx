@@ -24,7 +24,7 @@ const Home: NextPage = () => {
         model: 'text-davinci-003',
         prompt: prompt,
         temperature: 0.5,
-        max_tokens: 100
+        max_tokens: 500
       })
       setResult(res.data.choices[0].text as string)
     }
@@ -72,9 +72,11 @@ const Home: NextPage = () => {
             {isLoading ? <CircularProgress size='25px' /> : 'submit'}
           </Button>
         </form>
-        <Typography variant='inherit' lineHeight='22px' className={styles.fonts}>
-          {result}
-        </Typography>
+        <Box height='250px' style={{overflowY: 'scroll'}}>
+          <Typography variant='inherit' lineHeight='22px' className={styles.fonts}>
+            {result}
+          </Typography>
+        </Box>
       </main>
     </>
   )
