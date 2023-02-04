@@ -7,6 +7,7 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <p className='version'>Beta v1.0.0</p>
       </body>
     </Html>
   )

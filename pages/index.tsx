@@ -14,6 +14,7 @@ const Home: NextPage = () => {
 
   const [prompt, setPrompt] = useState<string>('')
   const [result, setResult] = useState<string>('')
+  const [question, setQuestion] = useState<string>('')
   const [isLoading, setIsLoading] = useState<boolean>(false)
   
   const handleClick = async (e: FormEvent) => {
@@ -24,7 +25,7 @@ const Home: NextPage = () => {
         model: 'text-davinci-003',
         prompt: prompt,
         temperature: 0.5,
-        max_tokens: 500
+        max_tokens: 700
       })
       setResult(res.data.choices[0].text as string)
     }
@@ -33,9 +34,21 @@ const Home: NextPage = () => {
     }
     finally {
       setIsLoading(false)
+      setQuestion(prompt)
       setPrompt('')
     }
   }
+
+  const steps = result
+    .split("\n\n")
+    .filter(step => step)
+    .map((step, index) => {
+      if (step.match(/^\d+\./)) {
+        return <li key={index} className={styles.steps}>{step}</li>
+      } else {
+        return <span key={index}>{step}</span>;
+      }
+    })
 
   return (
     <>
@@ -63,7 +76,7 @@ const Home: NextPage = () => {
             style={{ width: '100%', padding: 15 }}
           />
           <Button
-            variant="outlined"
+            variant={!prompt ? "contained" : "outlined"}
             disabled={!prompt}
             style={{marginTop: '20px'}}
             className={styles.btn}
@@ -73,9 +86,10 @@ const Home: NextPage = () => {
             {isLoading ? <CircularProgress size='25px' /> : 'submit'}
           </Button>
         </form>
-        <Box height='220px' style={{overflowY: 'scroll'}}>
-          <Typography variant='inherit' lineHeight='22px' className={styles.fonts}>
-            {result}
+        <Typography variant='inherit' align='center' fontSize='20px' color='steelblue'>{question}</Typography>
+        <Box className={styles.boxanswer}>
+          <Typography lineHeight='22px' className={styles.fonts}>
+            {steps}
           </Typography>
         </Box>
       </main>
