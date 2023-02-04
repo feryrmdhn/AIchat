@@ -105,6 +105,7 @@ a {
   color: #878787;
   font-family: monospace;
   letter-spacing: 1px;
+  margin-bottom: 25px;
 }
 
 @media (prefers-color-scheme: dark) {
